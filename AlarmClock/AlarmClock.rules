@@ -1,0 +1,85 @@
+
+(rules PCB AlarmClock
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 3776)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.3)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.8)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 200.2)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    "Net-(A1-Pad1)" "Net-(A1-Pad17)" "Net-(A1-Pad2)" "Net-(A1-Pad18)" "Net-(A1-Pad3)" "Net-(A1-Pad19)" GND "Net-(A1-Pad20)"
+    SER "Net-(A1-Pad21)" SRCLK "Net-(A1-Pad22)" RCLK SDA SW0 SCL
+    SW1 "Net-(A1-Pad25)" SW2 "Net-(A1-Pad26)" SW3 VCC LED0 "Net-(A1-Pad28)"
+    LED1 "Net-(A1-Pad30)" "Net-(A1-Pad15)" "Net-(A1-Pad16)" e d "Net-(AFF1-Pad3)" c
+    DP b a "Net-(AFF1-Pad8)" f g "Net-(AFF2-Pad3)" "Net-(AFF2-Pad8)"
+    "Net-(AFF3-Pad8)" "Net-(AFF3-Pad3)" "Net-(AFF4-Pad8)" "Net-(AFF4-Pad3)" "Net-(AFF5-Pad3)" "Net-(AFF5-Pad8)" "Net-(AFF6-Pad3)" "Net-(AFF6-Pad8)"
+    "Net-(AFF7-Pad8)" "Net-(AFF7-Pad3)" "Net-(AFF8-Pad8)" "Net-(AFF8-Pad3)" "Net-(BT1-Pad1)" "Net-(D1-Pad1)" "Net-(D2-Pad1)" TR0
+    TR4 TR1 TR5 TR2 TR6 TR3 TR7 "Net-(R1-Pad2)"
+    "Net-(R2-Pad2)" "Net-(R3-Pad2)" "Net-(R4-Pad2)" "Net-(R5-Pad2)" "Net-(R6-Pad2)" "Net-(R7-Pad2)" "Net-(R8-Pad2)" "Net-(U1-Pad9)"
+    "Net-(U2-Pad9)" "Net-(U3-Pad1)" "Net-(U3-Pad2)" "Net-(U3-Pad3)" "Net-(U3-Pad7)" speaker
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
